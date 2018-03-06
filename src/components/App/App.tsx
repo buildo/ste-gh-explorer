@@ -12,8 +12,7 @@ In this simple example it does a bit of both.
 
 import * as React from 'react';
 import View from 'View';
-import SwitchViewDropdown from 'SwitchViewDropdown';
-import Hello from 'Hello';
+
 import { declareQueries } from '@buildo/bento/data';
 import { CurrentView } from 'model';
 
@@ -22,10 +21,38 @@ import './app.scss';
 class App extends React.Component<{ currentView: CurrentView }> {
   render() {
     return (
-      <View column className='app'>
-        <h1>Bento App</h1>
-        <SwitchViewDropdown />
-        {this.props.currentView === 'hello' && <Hello />}
+      <View column className="main">
+        <div className="header">
+          <h1>header</h1>
+        </div>
+
+        <View column className="content">
+          <View column className="results">
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+            <h1 className="placeholder">Search in the top</h1>
+          </View>
+        </View>
       </View>
     );
   }
