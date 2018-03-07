@@ -1,3 +1,17 @@
-.app {
-  margin: 20px;
+.main {
+  background: #bac8ff;
+  height: 100%;
+
+  .header {
+    background: #74c0fc;
+  }
+
+  .content {
+    background: #8ce99a;
+  }
+
+  .results {
+    max-width: 1000px;
+    background: #ffd43b;
+  }
 }

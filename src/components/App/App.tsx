@@ -1,35 +1,20 @@
-/*
-
-This component is the entry point for our app.
-It must be named exactly `App` and live in the `components/App` folder.
-Typical tasks performed in this component are:
-- general app layout
-- choosing the correct component to render based on the current view
-
-In this simple example it does a bit of both.
-
-*/
-
 import * as React from 'react';
 import View from 'View';
-import SwitchViewDropdown from 'SwitchViewDropdown';
-import Hello from 'Hello';
-import { declareQueries } from '@buildo/bento/data';
-import { CurrentView } from 'model';
 
 import './app.scss';
 
-class App extends React.Component<{ currentView: CurrentView }> {
+export default class App extends React.Component {
   render() {
     return (
-      <View column className='app'>
-        <h1>Bento App</h1>
-        <SwitchViewDropdown />
-        {this.props.currentView === 'hello' && <Hello />}
+      <View column className="main">
+        <View basis={50} className="header" vAlignContent="center">
+          <h1>header</h1>
+        </View>
+
+        <View column className="content" grow hAlignContent="center">
+          <View column className="results" grow width="100%" />
+        </View>
       </View>
     );
   }
 }
-
-const queries = declareQueries(['currentView']);
-export default queries(App);
