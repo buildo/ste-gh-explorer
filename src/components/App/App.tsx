@@ -1,5 +1,6 @@
 import * as React from 'react';
 import View from 'View';
+import NavBar from 'NavBar';
 
 import './app.scss';
 
@@ -8,7 +9,7 @@ export default class App extends React.Component {
     return (
       <View column className="main">
         <View basis={50} className="header" vAlignContent="center">
-          <h1>header</h1>
+          <NavBar />
         </View>
 
         <View column className="content" grow hAlignContent="center">
