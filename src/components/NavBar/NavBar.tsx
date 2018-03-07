@@ -4,7 +4,7 @@ import SearchBar from 'SearchBar';
 
 import './navBar.scss';
 const left = () => {
-  return <h1 className="header-name">Ste-gh-explorer</h1>;
+  return <h1 className="header-name">GH-Explorer</h1>;
 };
 
 export default class NavBar extends React.Component {
