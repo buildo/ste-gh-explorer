@@ -8,7 +8,12 @@ export default class App extends React.Component {
   render() {
     return (
       <View column className="main">
-        <View basis={50} className="header" vAlignContent="center">
+        <View
+          basis={50}
+          className="header"
+          vAlignContent="center"
+          hAlignContent="center"
+        >
           <NavBar />
         </View>
 
