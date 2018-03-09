@@ -28,6 +28,8 @@ export { HistoryLocation };
 export type CurrentView = 'home';
 
 export type SearchResult = {
+  id: number;
+  id_str: string;
   repoName: string;
   repoDescription: string;
   url?: string;
