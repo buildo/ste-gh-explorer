@@ -1,5 +1,7 @@
+@import '~theme/variables.scss';
+
 .results-row {
-  border: #add 1px solid;
+  border: $debug-color 1px solid;
   margin-bottom: .4em;
   justify-content: space-between;
   padding: 0 6em;

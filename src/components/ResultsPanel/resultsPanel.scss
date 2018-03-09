@@ -1,6 +1,8 @@
+@import '~theme/variables.scss';
+
 .results {
   &-panel {
-    border: solid 1px #d3d3d3;
+    border: solid 1px $debug-color;
     margin-top: 20px;
   }
 
