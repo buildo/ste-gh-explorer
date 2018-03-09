@@ -1,3 +1,15 @@
 .search-bar {
   background-attachment: fixed;
+
+  &-input {
+    overflow: hidden;
+
+    &-button {
+      height: 32px;
+      border-width: 0 0 0 1px;
+      border-radius: 0px 4px 4px 0px;
+      margin-right: 1px;
+      font-size: 14px;
+    }
+  }
 }
