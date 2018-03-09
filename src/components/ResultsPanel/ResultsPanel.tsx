@@ -34,7 +34,7 @@ export default class ResultsPanel extends React.PureComponent<Props> {
     const placeholderMessage = this.getPlaceholderMessage();
 
     return (
-      <ScrollView className="results">
+      <ScrollView className="results-panel">
         <View column grow hAlignContent="center">
           {placeholderMessage ? (
             <Placeholder message={placeholderMessage} />
