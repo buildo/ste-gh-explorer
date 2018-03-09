@@ -39,7 +39,8 @@ export default class ResultsPanel extends React.PureComponent<Props> {
           {placeholderMessage ? (
             <Placeholder message={placeholderMessage} />
           ) : (
-            results && results.map(result => <ResultsRow {...result} />)
+            results &&
+            results.map(result => <ResultsRow key={result.id} {...result} />)
           )}
         </View>
       </ScrollView>
