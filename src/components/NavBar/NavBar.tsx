@@ -4,7 +4,7 @@ import SearchBar from 'SearchBar';
 
 import './navBar.scss';
 const left = () => {
-  return <h1 className="header-name">GH-Explorer</h1>;
+  return <h1 className="nav-bar-header-name">GH-Explorer</h1>;
 };
 
 export default class NavBar extends React.Component {
@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <NavBarBRC
-        className="header-content"
+        className="nav-bar-header"
         content={{
           left: left(),
           center: <SearchBar onSearchSubmit={this.onSearchSubmit} />
