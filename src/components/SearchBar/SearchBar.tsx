@@ -2,9 +2,14 @@ import * as React from 'react';
 import InputChildren from 'InputChildren';
 import './searchBar.scss';
 
-export default class SearchBar extends React.PureComponent<{
-  onSearchSubmit(query: string): void;
-}> {
+export default class SearchBar extends React.PureComponent<
+  {
+    onSearchSubmit(query: string): void;
+  },
+  {
+    searchQuery: string;
+  }
+> {
   state = {
     searchQuery: ''
   };
