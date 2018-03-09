@@ -24,7 +24,7 @@ export default class App extends React.Component {
           <NavBar />
         </View>
 
-        <View column className="main-content" grow hAlignContent="center">
+        <View column className="app-content" grow hAlignContent="center">
           <ResultsPanel
             results={[
               dummySearchResults,
