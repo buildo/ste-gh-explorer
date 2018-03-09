@@ -1,0 +1,10 @@
+@import '~theme/variables.scss';
+
+.results {
+  &-panel {
+    border: solid 1px $debug-color;
+    margin-top: 20px;
+  }
+
+  max-width: 1000px;
+}

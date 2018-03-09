@@ -2,6 +2,11 @@
   "locales": ["it"],
   "messages": {
     "NavBar.appName": "GH-Explorer",
-    "SearchBar.buttonLabel": "Cerca!"
+    "SearchBar.buttonLabel": "Cerca!",
+    "ResultsRow.callToAction": "Vedi altro!",
+    "ResultsPanel.noQuerySearched":
+      "Cerca un repo nella barra in alto per vedere i risultati!",
+    "ResultsPanel.noResultsAvailable":
+      "Mi dispiace, ma la tua stupida ricerca non ha prodotto risultati!"
   }
 }

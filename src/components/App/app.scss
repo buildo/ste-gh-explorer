@@ -3,11 +3,11 @@
 .app {
   height: 100%;
 
-  .results {
-    max-width: 1000px;
+  &-content {
+    margin-top: 20px;
   }
 
-  .header {
+  &-header {
     background: $ice;
     padding: 20px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .1) !important;
