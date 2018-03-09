@@ -31,12 +31,12 @@ export default class SearchBar extends React.PureComponent<Props, State> {
     return (
       <InputChildren
         wrapper={{
-          className: 'search-bar-input'
+          className: 'search-bar'
         }}
         onChange={this.onSearchChange}
       >
         <Button
-          className="search-bar-input-button"
+          className="search-bar-button"
           size="tiny"
           type="flat"
           onClick={this.onSearchSubmit}
