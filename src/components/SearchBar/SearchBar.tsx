@@ -2,7 +2,7 @@ import * as React from 'react';
 import InputChildren from 'InputChildren';
 import './searchBar.scss';
 import Button from 'Button';
-
+import { FormattedMessage } from 'react-intl';
 type Props = {
   onSearchSubmit(query: string): void;
 };
@@ -35,14 +35,17 @@ export default class SearchBar extends React.PureComponent<Props, State> {
         }}
         onChange={this.onSearchChange}
       >
-        <Button
-          className="search-bar-button"
-          size="tiny"
-          type="flat"
-          onClick={this.onSearchSubmit}
-        >
-          Search
-        </Button>
+        <FormattedMessage id="SearchBar.buttonLabel">
+          {(txt: string) => (
+            <Button
+              className="search-bar-button"
+              label={txt}
+              size="tiny"
+              type="flat"
+              onClick={this.onSearchSubmit}
+            />
+          )}
+        </FormattedMessage>
       </InputChildren>
     );
   }
