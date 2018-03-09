@@ -1,0 +1,11 @@
+.search-bar {
+  overflow: hidden;
+
+  &-button {
+    height: 32px;
+    border-width: 0 0 0 1px;
+    border-radius: 0 4px 4px 0;
+    margin-right: 1px;
+    font-size: 14px;
+  }
+}

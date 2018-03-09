@@ -1,17 +1,15 @@
-.main {
-  background: #bac8ff;
+@import '~theme/variables.scss';
+
+.app {
   height: 100%;
-
-  .header {
-    background: #74c0fc;
-  }
-
-  .content {
-    background: #8ce99a;
-  }
 
   .results {
     max-width: 1000px;
-    background: #ffd43b;
+  }
+
+  .header {
+    background: $ice;
+    padding: 20px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .1) !important;
   }
 }
