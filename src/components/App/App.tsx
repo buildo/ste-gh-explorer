@@ -7,7 +7,7 @@ import './app.scss';
 export default class App extends React.Component {
   render() {
     return (
-      <View column className="main">
+      <View column className="app">
         <View
           basis={50}
           className="header"
