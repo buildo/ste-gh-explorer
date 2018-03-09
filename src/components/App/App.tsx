@@ -2,8 +2,14 @@ import * as React from 'react';
 import View from 'View';
 import NavBar from 'NavBar';
 import ResultsPanel from 'ResultsPanel';
-
+import { SearchResult } from 'model';
 import './app.scss';
+
+const dummySearchResults: SearchResult = {
+  repoName: 'gh-explorer',
+  repoDescription: 'A dummy repo',
+  url: 'https://www.google.it'
+};
 
 export default class App extends React.Component {
   render() {
@@ -18,10 +24,22 @@ export default class App extends React.Component {
           <NavBar />
         </View>
 
-        <View column className="content" grow hAlignContent="center">
-          <View column className="results" grow width="100%">
-            <ResultsPanel results={[]} />
-          </View>
+        <View column className="main-content" grow hAlignContent="center">
+          <ResultsPanel
+            results={[
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults,
+              dummySearchResults
+            ]}
+          />
         </View>
       </View>
     );

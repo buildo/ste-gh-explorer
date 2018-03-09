@@ -3,8 +3,8 @@
 .app {
   height: 100%;
 
-  .results {
-    max-width: 1000px;
+  &-content {
+    margin-top: 20px;
   }
 
   .header {
