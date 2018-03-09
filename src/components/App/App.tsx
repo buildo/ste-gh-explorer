@@ -17,7 +17,7 @@ export default class App extends React.Component {
       <View column className="app">
         <View
           basis={50}
-          className="header"
+          className="app-header"
           vAlignContent="center"
           hAlignContent="center"
         >
