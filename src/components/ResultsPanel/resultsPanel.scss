@@ -1,4 +1,9 @@
-.results-panel {
-  height: 100%;
-  background: #d3d3d3;
+.results {
+  &-results-panel {
+    height: 100%;
+    border: solid 1px #d3d3d3;
+    margin-top: 20px;
+  }
+
+  max-width: 1000px;
 }

@@ -2,57 +2,45 @@ import * as React from 'react';
 import ScrollView from 'ScrollView';
 import View from 'View';
 import ResultsRow from 'ResultsRow';
-
+import Panel from 'Panel';
+import { SearchResult } from 'model';
 import './resultsPanel.scss';
 
 type Props = {
-  results: Array<Object>;
+  results?: Array<SearchResult>;
 };
 
 const Placeholder = ({ message }: { message: string }) => {
   return (
-    <div>
+    <Panel type="floating">
       <p>{message}</p>
-    </div>
+    </Panel>
   );
 };
+
 export default class ResultsPanel extends React.PureComponent<Props> {
-  render() {
+  getPlaceholderMessage = (): string | null => {
     const { results } = this.props;
     const isResultsUndefined = typeof results === 'undefined';
-    const hasResults = results.length;
-    if (isResultsUndefined) {
-      return (
-        <Placeholder message="Search a repo in the top bar to see the results!" />
-      );
-    }
-    if (hasResults) {
-      return <Placeholder message="Sorry, no result for your stupid query!" />;
-    }
+    const hasResults = results && results.length;
+
+    if (isResultsUndefined)
+      return 'Search a repo in the top bar to see the results!';
+    if (!hasResults) return 'Sorry, no results for your stupid query!';
+    return null;
+  };
+  render() {
+    const { results } = this.props;
+    const placeholderMessage = this.getPlaceholderMessage();
+
     return (
-      <ScrollView>
-        <View column hAlignContent="center" className="results-panel">
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
-          <ResultsRow />
+      <ScrollView className="results">
+        <View column grow hAlignContent="center">
+          {placeholderMessage ? (
+            <Placeholder message={placeholderMessage} />
+          ) : (
+            results && results.map(result => <ResultsRow {...result} />)
+          )}
         </View>
       </ScrollView>
     );
