@@ -1,3 +1,3 @@
-import NavBarBRC from 'buildo-react-components/lib/NavBar';
+import NavBarBRC from '@buildo/bento/components/NavBar';
 
 export default NavBarBRC;
