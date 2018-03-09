@@ -1,6 +1,7 @@
 import * as React from 'react';
 import View from 'View';
 import NavBar from 'NavBar';
+import ResultsPanel from 'ResultsPanel';
 
 import './app.scss';
 
@@ -18,7 +19,9 @@ export default class App extends React.Component {
         </View>
 
         <View column className="content" grow hAlignContent="center">
-          <View column className="results" grow width="100%" />
+          <View column className="results" grow width="100%">
+            <ResultsPanel results={[]} />
+          </View>
         </View>
       </View>
     );
