@@ -5,16 +5,18 @@ import ResultsRow from 'ResultsRow';
 
 import './resultsPanel.scss';
 
-const Placeholder = ({ message }) => {
+type Props = {
+  results: Array<Object>;
+};
+
+const Placeholder = ({ message }: { message: string }) => {
   return (
     <div>
       <p>{message}</p>
     </div>
   );
 };
-export default class ResultsPanel extends React.PureComponent<{
-  results: Array<Object>;
-}> {
+export default class ResultsPanel extends React.PureComponent<Props> {
   render() {
     const { results } = this.props;
     const isResultsUndefined = typeof results === 'undefined';
