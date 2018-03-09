@@ -3,6 +3,10 @@
   "messages": {
     "NavBar.appName": "GH-Explorer",
     "SearchBar.buttonLabel": "Search!",
-    "ResultsRow.callToAction": "See more!"
+    "ResultsRow.callToAction": "See more!",
+    "ResultsPanel.noQuerySearched":
+      "Search a repo in the top bar to see the results!",
+    "ResultsPanel.noResultsAvailable":
+      "Sorry, no results for your stupid query!"
   }
 }

@@ -4,16 +4,18 @@ import View from 'View';
 import ResultsRow from 'ResultsRow';
 import Panel from 'Panel';
 import { SearchResult } from 'model';
+import { FormattedMessage } from 'react-intl';
+
 import './resultsPanel.scss';
 
 type Props = {
   results?: Array<SearchResult>;
 };
 
-const Placeholder = ({ message }: { message: string }) => {
+const Placeholder = ({ errorMessage }: { errorMessage: string }) => {
   return (
     <Panel type="floating">
-      <p>{message}</p>
+      <FormattedMessage id={errorMessage} />
     </Panel>
   );
 };
@@ -24,9 +26,8 @@ export default class ResultsPanel extends React.PureComponent<Props> {
     const isResultsUndefined = typeof results === 'undefined';
     const hasResults = results && results.length;
 
-    if (isResultsUndefined)
-      return 'Search a repo in the top bar to see the results!';
-    if (!hasResults) return 'Sorry, no results for your stupid query!';
+    if (isResultsUndefined) return 'ResultsPanel.noQuerySearched';
+    if (!hasResults) return 'ResultsPanel.noResultsAvailable';
     return null;
   };
   render() {
@@ -37,7 +38,7 @@ export default class ResultsPanel extends React.PureComponent<Props> {
       <ScrollView className="results-panel">
         <View column grow hAlignContent="center">
           {placeholderMessage ? (
-            <Placeholder message={placeholderMessage} />
+            <Placeholder errorMessage={placeholderMessage} />
           ) : (
             results &&
             results.map(result => <ResultsRow key={result.id} {...result} />)
