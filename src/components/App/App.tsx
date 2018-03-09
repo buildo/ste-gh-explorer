@@ -5,11 +5,15 @@ import ResultsPanel from 'ResultsPanel';
 import { SearchResult } from 'model';
 import './app.scss';
 
-const dummySearchResults: SearchResult = {
-  repoName: 'gh-explorer',
-  repoDescription: 'A dummy repo',
-  url: 'https://www.google.it'
-};
+const DummySearchResults: Array<SearchResult> = Array(10)
+  .fill(0)
+  .map((_, i: number): SearchResult => ({
+    id: i,
+    id_str: i.toString(),
+    repoName: 'gh-explorer',
+    repoDescription: 'A dummy repo',
+    url: 'https://www.google.it'
+  }));
 
 export default class App extends React.Component {
   render() {
@@ -25,21 +29,7 @@ export default class App extends React.Component {
         </View>
 
         <View column className="app-content" grow hAlignContent="center">
-          <ResultsPanel
-            results={[
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults,
-              dummySearchResults
-            ]}
-          />
+          <ResultsPanel results={DummySearchResults} />
         </View>
       </View>
     );
