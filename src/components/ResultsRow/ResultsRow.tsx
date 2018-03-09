@@ -1,6 +1,9 @@
 import * as React from 'react';
 import View from 'View';
 import { SearchResult } from 'model';
+import Button from 'Button';
+import { FormattedMessage } from 'react-intl';
+
 import './resultsRow.scss';
 
 export default class ResultsRow extends React.PureComponent<SearchResult> {
@@ -8,6 +11,10 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
     repoName: '',
     repoDescription: '',
     url: ''
+  };
+
+  onSeeMoreClick = (): void => {
+    console.log('See more from: ', this.props.repoName);
   };
   render() {
     const { repoName, repoDescription } = this.props;
@@ -19,7 +26,11 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
           <p>{repoDescription}</p>
         </View>
 
-        <button>See more </button>
+        <FormattedMessage id="ResultsRow.callToAction">
+          {(txt: string) => (
+            <Button type="default" onClick={this.onSeeMoreClick} label={txt} />
+          )}
+        </FormattedMessage>
       </View>
     );
   }

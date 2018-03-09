@@ -2,6 +2,7 @@
   "locales": ["it"],
   "messages": {
     "NavBar.appName": "GH-Explorer",
-    "SearchBar.buttonLabel": "Cerca!"
+    "SearchBar.buttonLabel": "Cerca!",
+    "ResultsRow.callToAction": "Vedi altro!"
   }
 }
