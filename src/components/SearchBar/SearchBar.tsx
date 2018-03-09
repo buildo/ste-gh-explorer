@@ -1,15 +1,16 @@
 import * as React from 'react';
 import InputChildren from 'InputChildren';
 import './searchBar.scss';
+import Button from 'Button';
 
-export default class SearchBar extends React.PureComponent<
-  {
-    onSearchSubmit(query: string): void;
-  },
-  {
-    searchQuery: string;
-  }
-> {
+type Props = {
+  onSearchSubmit(query: string): void;
+};
+
+type State = {
+  searchQuery: string;
+};
+export default class SearchBar extends React.PureComponent<Props, State> {
   state = {
     searchQuery: ''
   };
@@ -34,12 +35,14 @@ export default class SearchBar extends React.PureComponent<
         }}
         onChange={this.onSearchChange}
       >
-        <button
+        <Button
           className="search-bar-input-button"
+          size="tiny"
+          type="flat"
           onClick={this.onSearchSubmit}
         >
-          Button label
-        </button>
+          Search
+        </Button>
       </InputChildren>
     );
   }
