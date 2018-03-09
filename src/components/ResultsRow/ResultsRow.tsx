@@ -14,7 +14,7 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
   };
 
   onSeeMoreClick = (): void => {
-    console.log('See more from: ', this.props.repoName);
+    console.log('See more from: ', this.props.id);
   };
   render() {
     const { repoName, repoDescription } = this.props;
@@ -22,8 +22,8 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
     return (
       <View className="results-row" vAlignContent="center" width="100%">
         <View column vAlignContent="center">
-          <p>{repoName}</p>
-          <p>{repoDescription}</p>
+          <div>{repoName}</div>
+          <div>{repoDescription}</div>
         </View>
 
         <FormattedMessage id="ResultsRow.callToAction">
