@@ -2,21 +2,20 @@ import * as React from 'react';
 import View from 'View';
 import NavBar from 'NavBar';
 import ResultsPanel from 'ResultsPanel';
-import { SearchResult } from 'model';
 import './app.scss';
 
-const DummySearchResults: Array<SearchResult> = Array(10)
-  .fill(0)
-  .map((_, i: number): SearchResult => ({
-    id: i,
-    id_str: i.toString(),
-    repoName: 'gh-explorer',
-    repoDescription: 'A dummy repo',
-    url: 'https://www.google.it'
-  }));
-
-export default class App extends React.Component {
+type State = {
+  query: string;
+};
+export default class App extends React.Component<{}, State> {
+  state = {
+    query: ''
+  };
+  onSearchSubmit = (query: string) => {
+    this.setState({ query });
+  };
   render() {
+    const { state: { query }, onSearchSubmit } = this;
     return (
       <View column className="app">
         <View
@@ -25,11 +24,11 @@ export default class App extends React.Component {
           vAlignContent="center"
           hAlignContent="center"
         >
-          <NavBar />
+          <NavBar onSearchSubmit={onSearchSubmit} />
         </View>
 
         <View column className="app-content" grow hAlignContent="center">
-          <ResultsPanel results={DummySearchResults} />
+          <ResultsPanel query={query} />
         </View>
       </View>
     );
