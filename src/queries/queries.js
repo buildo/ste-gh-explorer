@@ -26,6 +26,23 @@ export const currentView = Query({
   fetch: ({ location }) => Promise.resolve(locationToView(location))
 });
 
+export const searchGithubRepoQuery = Query({
+  id: 'searchGithubRepo',
+  cacheStrategy: available,
+
+  params: {
+    query: t.string
+  },
+
+  fetch: ({ query }) => {
+    if (query.trim().length) {
+      return API.searchGithubRepo(query);
+    }
+
+    return Promise.resolve({ error: 'noQuery' });
+  }
+});
+
 export const randomName = Query({
   // required `id` of the query, components can refer to this via its id
   id: 'randomName',
