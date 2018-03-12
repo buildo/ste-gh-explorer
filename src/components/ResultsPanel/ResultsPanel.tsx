@@ -19,7 +19,6 @@ type Props = {
       loading: boolean;
     };
   };
-  query: string;
 };
 
 const Placeholder = ({ errorMessage }: { errorMessage: string }) => {
