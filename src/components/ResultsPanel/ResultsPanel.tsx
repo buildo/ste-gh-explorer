@@ -52,7 +52,11 @@ class ResultsPanel extends React.PureComponent<Props> {
     const placeholderMessage = this.getPlaceholderMessage();
 
     if (loading) {
-      return <LoadingSpinner />;
+      return (
+        <View grow className="results-panel results-panel-loading">
+          <LoadingSpinner />
+        </View>
+      );
     }
     return (
       <ScrollView className="results-panel">
