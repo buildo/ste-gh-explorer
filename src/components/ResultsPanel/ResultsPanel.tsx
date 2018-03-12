@@ -3,6 +3,7 @@ import ScrollView from 'ScrollView';
 import View from 'View';
 import ResultsRow from 'ResultsRow';
 import Panel from 'Panel';
+import LoadingSpinner from 'LoadingSpinner';
 import { SearchResult } from 'model';
 import { FormattedMessage } from 'react-intl';
 
@@ -44,9 +45,19 @@ class ResultsPanel extends React.PureComponent<Props> {
     return null;
   };
   render() {
-    const { searchGithubRepo } = this.props;
+    const {
+      searchGithubRepo,
+      readyState: { searchGithubRepo: { loading } }
+    } = this.props;
     const placeholderMessage = this.getPlaceholderMessage();
 
+    if (loading) {
+      return (
+        <View grow className="results-panel results-panel-loading">
+          <LoadingSpinner />
+        </View>
+      );
+    }
     return (
       <ScrollView className="results-panel">
         <View column grow hAlignContent="center">
