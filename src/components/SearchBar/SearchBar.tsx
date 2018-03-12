@@ -19,6 +19,12 @@ export default class SearchBar extends React.PureComponent<Props, State> {
     this.setState({ searchQuery: e.currentTarget.value });
   };
 
+  onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key == 'Enter') {
+      this.onSearchSubmit();
+    }
+  };
+
   onSearchSubmit = () => {
     const { searchQuery } = this.state;
 
@@ -34,6 +40,7 @@ export default class SearchBar extends React.PureComponent<Props, State> {
           className: 'search-bar'
         }}
         onChange={this.onSearchChange}
+        onKeyUp={this.onKeyUp}
       >
         <FormattedMessage id="SearchBar.buttonLabel">
           {(txt: string) => (
