@@ -26,15 +26,13 @@ import { HistoryLocation } from '@buildo/bento/data';
 export { HistoryLocation };
 
 export type CurrentView = 'home';
-
-export type SearchResult = {
+export interface SearchResult {
   id: number;
-  id_str: string;
-  repoName: string;
-  repoDescription: string;
-  url?: string;
-};
-
+  name: string;
+  full_name: string;
+  html_url: string;
+  description: string;
+}
 export function locationToView(location: HistoryLocation): CurrentView {
   switch (location.pathname) {
     default:

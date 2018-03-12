@@ -14,16 +14,18 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
   };
 
   onSeeMoreClick = (): void => {
-    console.log('See more from: ', this.props.id);
+    window.open(this.props.html_url, '_blank');
   };
   render() {
-    const { repoName, repoDescription } = this.props;
+    const { name, description, html_url } = this.props;
 
     return (
       <View className="results-row" vAlignContent="center" width="100%">
         <View column vAlignContent="center">
-          <div>{repoName}</div>
-          <div>{repoDescription}</div>
+          <a href={html_url} target="_blank">
+            <h1>{name}</h1>
+          </a>
+          <div>{description}</div>
         </View>
 
         <FormattedMessage id="ResultsRow.callToAction">

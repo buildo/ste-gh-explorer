@@ -4,6 +4,10 @@ import SearchBar from 'SearchBar';
 import { FormattedMessage } from 'react-intl';
 
 import './navBar.scss';
+
+type Props = {
+  onSearchSubmit(query: string): void;
+};
 const left = () => {
   return (
     <h1 className="nav-bar-header-name">
@@ -12,18 +16,15 @@ const left = () => {
   );
 };
 
-export default class NavBar extends React.Component {
-  onSearchSubmit = (query: string) => {
-    alert(query);
-  };
-
+export default class NavBar extends React.Component<Props> {
   render() {
+    const { onSearchSubmit } = this.props;
     return (
       <NavBarBRC
         className="nav-bar-header"
         content={{
           left: left(),
-          center: <SearchBar onSearchSubmit={this.onSearchSubmit} />
+          center: <SearchBar onSearchSubmit={onSearchSubmit} />
         }}
       />
     );

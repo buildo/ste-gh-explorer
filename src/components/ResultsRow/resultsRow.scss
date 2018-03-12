@@ -1,8 +1,31 @@
 @import '~theme/variables.scss';
 
 .results-row {
-  border: $debug-color 1px solid;
   margin-bottom: .4em;
   justify-content: space-between;
-  padding: 0 6em;
+  background: $white;
+  border-radius: 4px;
+  box-shadow: $light-shadow;
+  padding: 2.1rem;
+  padding-left: 3.15rem;
+  padding-right: 3.15rem;
+  margin-left: -2.1rem;
+  margin-right: -2.1rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 100ms cubic-bezier(.4, 0, .2, 1);
+    font-weight: $bold;
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0 0 1.05rem;
+    color: $coolBlack;
+    font-weight: $bold;
+    text-rendering: optimizeLegibility;
+    font-size: 1.51572rem;
+    line-height: 1.075;
+  }
 }

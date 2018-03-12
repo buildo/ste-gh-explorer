@@ -7,9 +7,18 @@ import { SearchResult } from 'model';
 import { FormattedMessage } from 'react-intl';
 
 import './resultsPanel.scss';
+import { declareQueries } from '@buildo/bento/data';
 
 type Props = {
-  results?: Array<SearchResult>;
+  searchGithubRepo?: {
+    items: Array<SearchResult>;
+    error?: string;
+  };
+  readyState: {
+    searchGithubRepo: {
+      loading: boolean;
+    };
+  };
 };
 
 const Placeholder = ({ errorMessage }: { errorMessage: string }) => {
@@ -20,18 +29,22 @@ const Placeholder = ({ errorMessage }: { errorMessage: string }) => {
   );
 };
 
-export default class ResultsPanel extends React.PureComponent<Props> {
+class ResultsPanel extends React.PureComponent<Props> {
   getPlaceholderMessage = (): string | null => {
-    const { results } = this.props;
-    const isResultsUndefined = typeof results === 'undefined';
-    const hasResults = results && results.length;
+    const { searchGithubRepo, readyState } = this.props;
+    const noQuery = searchGithubRepo && searchGithubRepo.error == 'noQuery';
+    const hasResults =
+      searchGithubRepo &&
+      searchGithubRepo.items &&
+      searchGithubRepo.items.length;
 
-    if (isResultsUndefined) return 'ResultsPanel.noQuerySearched';
-    if (!hasResults) return 'ResultsPanel.noResultsAvailable';
+    if (noQuery) return 'ResultsPanel.noQuerySearched';
+    if (!hasResults && !readyState.searchGithubRepo.loading)
+      return 'ResultsPanel.noResultsAvailable';
     return null;
   };
   render() {
-    const { results } = this.props;
+    const { searchGithubRepo } = this.props;
     const placeholderMessage = this.getPlaceholderMessage();
 
     return (
@@ -40,11 +53,18 @@ export default class ResultsPanel extends React.PureComponent<Props> {
           {placeholderMessage ? (
             <Placeholder errorMessage={placeholderMessage} />
           ) : (
-            results &&
-            results.map(result => <ResultsRow key={result.id} {...result} />)
+            searchGithubRepo &&
+            searchGithubRepo.items.map(result => (
+              <ResultsRow key={result.id} {...result} />
+            ))
           )}
         </View>
       </ScrollView>
     );
   }
 }
+
+const queries = declareQueries(['searchGithubRepo']);
+export default (queries(ResultsPanel) as any) as React.ComponentType<{
+  query: string;
+}>;
