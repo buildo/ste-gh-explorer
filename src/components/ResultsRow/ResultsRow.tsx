@@ -14,15 +14,15 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
   };
 
   onSeeMoreClick = (): void => {
-    window.open(this.props.svn_url, '_blank');
+    window.open(this.props.html_url, '_blank');
   };
   render() {
-    const { name, description, svn_url } = this.props;
+    const { name, description, html_url } = this.props;
 
     return (
       <View className="results-row" vAlignContent="center" width="100%">
         <View column vAlignContent="center">
-          <a href={svn_url} target="_blank">
+          <a href={html_url} target="_blank">
             <h1>{name}</h1>
           </a>
           <div>{description}</div>
