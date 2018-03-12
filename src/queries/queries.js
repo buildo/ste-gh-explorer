@@ -42,21 +42,3 @@ export const searchGithubRepoQuery = Query({
     return Promise.resolve({ error: 'noQuery' });
   }
 });
-
-export const randomName = Query({
-  // required `id` of the query, components can refer to this via its id
-  id: 'randomName',
-
-  // using the `available` cache strategy means this value will be cached in memory
-  // indefinitely after it is fetched for the first time
-  cacheStrategy: available,
-
-  // define the input params the query requires in order to `fetch()`
-  params: {
-    length: t.number
-  },
-
-  // `fetch()` receives in input the input `params` and
-  // delegates the actual API call the a dedicated API method
-  fetch: ({ length }) => API.getRandomName(length)
-});
