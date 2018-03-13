@@ -22,22 +22,46 @@ in the example app created by default:
 */
 
 import { HistoryLocation } from '@buildo/bento/data';
-
+const qs = require('query-string');
 export { HistoryLocation };
+export type CurrentView = {
+  view: string;
+  payload: {
+    repo?: number;
+  };
+};
 
-export type CurrentView = 'home';
+interface License {
+  name: string;
+  url: string;
+}
+interface Owner {
+  login: string;
+  avatar_url: string;
+}
 export interface SearchResult {
   id: number;
   name: string;
   full_name: string;
   html_url: string;
   description: string;
+  topics: Array<string>;
+  created_at: string;
+  stargazers_count: number;
+  stargazers_url: string;
+  forks_count: string;
+  forks_url: string;
+  license: License;
+  owner: Owner;
 }
 export function locationToView(location: HistoryLocation): CurrentView {
+  const Location: CurrentView = { view: '', payload: {} };
   switch (location.pathname) {
     default:
-      return 'home';
+      Location.view = 'home';
   }
+  Location.payload = qs.parse(location.search);
+  return Location;
 }
 
 export function viewToLocation(view: CurrentView): HistoryLocation {
