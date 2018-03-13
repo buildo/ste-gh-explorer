@@ -26,7 +26,7 @@ export const currentView = Query({
   fetch: ({ location }) => Promise.resolve(locationToView(location))
 });
 
-export const searchGithubRepoQuery = Query({
+export const searchGithubRepo = Query({
   id: 'searchGithubRepo',
   cacheStrategy: available,
 
@@ -40,5 +40,29 @@ export const searchGithubRepoQuery = Query({
     }
 
     return Promise.resolve({ error: 'noQuery' });
+  }
+});
+
+export const searchGithubRepoByID = Query({
+  id: 'searchGithubRepoByID',
+  cacheStrategy: available,
+  dependencies: {
+    results: {
+      query: searchGithubRepo
+    }
+  },
+  params: {
+    results: t.any,
+    query: t.string,
+    ID: t.union([t.number, t.string])
+  },
+
+  fetch: ({ results, ID }) => {
+    const item = results.items && results.items.filter(e => e.id === ID);
+    if (item && item.length) {
+      return Promise.resolve(item[0]);
+    } else {
+      return API.searchGithubRepoByID(ID);
+    }
   }
 });
