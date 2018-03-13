@@ -66,7 +66,7 @@ class ResultsPanel extends React.PureComponent<Props> {
           ) : (
             searchGithubRepo &&
             searchGithubRepo.items.map(result => (
-              <ResultsRow key={result.id} {...result} />
+              <ResultsRow key={result.id} result={result} />
             ))
           )}
         </View>
