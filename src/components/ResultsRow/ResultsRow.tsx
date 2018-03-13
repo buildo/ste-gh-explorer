@@ -5,8 +5,16 @@ import Button from 'Button';
 import { FormattedMessage } from 'react-intl';
 
 import './resultsRow.scss';
+import { declareCommands } from '@buildo/bento/data';
 
-export default class ResultsRow extends React.PureComponent<SearchResult> {
+type Props = {
+  result: SearchResult;
+  doUpdateLocation(location: {
+    pathname: string | undefined;
+    search: string | undefined;
+  }): void;
+};
+class ResultsRow extends React.PureComponent<Props> {
   static defaultProps = {
     repoName: '',
     repoDescription: '',
@@ -14,10 +22,13 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
   };
 
   onSeeMoreClick = (): void => {
-    window.open(this.props.html_url, '_blank');
+    this.props.doUpdateLocation({
+      pathname: `/?repo=${this.props.result.id}`,
+      search: ''
+    });
   };
   render() {
-    const { name, description, html_url } = this.props;
+    const { result: { name, description, html_url } } = this.props;
 
     return (
       <View className="results-row" vAlignContent="center" width="100%">
@@ -37,3 +48,6 @@ export default class ResultsRow extends React.PureComponent<SearchResult> {
     );
   }
 }
+
+const commands = declareCommands(['doUpdateLocation']);
+export default commands(ResultsRow);
