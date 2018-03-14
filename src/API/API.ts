@@ -8,7 +8,7 @@ export const searchGithubRepo = (query: string) => {
     res.json()
   ) as Promise<Array<SearchResult>>;
 };
-export const searchGithubRepoByID = (ID: number | string) => {
+export const searchGithubRepoByID = (ID: number) => {
   return fetch(API_URL + GET_REPO_ENDPOINT + `/${ID}`).then(res =>
     res.json()
   ) as Promise<SearchResult>;
