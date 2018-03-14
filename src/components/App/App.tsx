@@ -28,16 +28,16 @@ class App extends React.Component<Props, State> {
   };
 
   onDialogClose = () => {
-    this.props.doUpdateLocation({ pathname: '', search: 'r' });
+    this.props.doUpdateLocation({ pathname: '/', search: '' });
   };
 
   renderModal = () => {
     const { currentView } = this.props;
-    if (currentView && currentView.payload.repo) {
+    if (currentView && currentView.view === 'details') {
       return (
         <ResultDetails
           query={this.state.query}
-          ID={currentView.payload.repo}
+          ID={currentView.repo}
           onDialogClose={this.onDialogClose}
         />
       );
