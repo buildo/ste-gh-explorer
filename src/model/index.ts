@@ -24,12 +24,15 @@ in the example app created by default:
 import { HistoryLocation } from '@buildo/bento/data';
 const qs = require('query-string');
 export { HistoryLocation };
-export type CurrentView = {
-  view: string;
-  payload: {
-    repo?: number;
-  };
-};
+
+export type CurrentView =
+  | {
+      view: 'home';
+    }
+  | {
+      view: 'details';
+      repo: number;
+    };
 
 interface License {
   name: string;
@@ -39,7 +42,7 @@ interface Owner {
   login: string;
   avatar_url: string;
 }
-export interface SearchResult {
+export type SearchResult = {
   id: number;
   name: string;
   full_name: string;
@@ -53,15 +56,18 @@ export interface SearchResult {
   forks_url: string;
   license: License;
   owner: Owner;
-}
+};
 export function locationToView(location: HistoryLocation): CurrentView {
-  const Location: CurrentView = { view: '', payload: {} };
   switch (location.pathname) {
+    case '/details':
+      const search = qs.parse(location.search);
+      if (search.repo) {
+        return { view: 'details', repo: parseInt(search.repo) };
+      }
+
     default:
-      Location.view = 'home';
+      return { view: 'home' };
   }
-  Location.payload = qs.parse(location.search);
-  return Location;
 }
 
 export function viewToLocation(view: CurrentView): HistoryLocation {
