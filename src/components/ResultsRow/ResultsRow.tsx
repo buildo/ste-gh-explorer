@@ -23,7 +23,7 @@ class ResultsRow extends React.PureComponent<Props> {
 
   onSeeMoreClick = (): void => {
     this.props.doUpdateLocation({
-      pathname: `/?repo=${this.props.result.id}`,
+      pathname: `/details?repo=${this.props.result.id}`,
       search: ''
     });
   };
