@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Modal from 'Modal';
+import { modalWithContext } from 'Modal';
 
 import View from 'View';
 import LoadingSpinner from 'LoadingSpinner';
@@ -9,9 +9,11 @@ import { FormattedMessage } from 'react-intl';
 import * as PropTypes from 'prop-types';
 
 import './resultDetails.scss';
-const FooType = PropTypes.object.isRequired;
+const ReactINTLContextType = PropTypes.object.isRequired;
 
-const ResultsDetailsModal = Modal.modalWithContext({ intl: FooType });
+const ResultsDetailsModal = modalWithContext({
+  intl: ReactINTLContextType
+});
 type Props = {
   onDialogClose(): void;
 } & (
@@ -42,6 +44,7 @@ class ResultDetails extends React.PureComponent<Props, State> {
           <LoadingSpinner />
         </div>
       );
+
     const {
       description,
       name,
@@ -53,6 +56,7 @@ class ResultDetails extends React.PureComponent<Props, State> {
       license,
       owner
     } = searchGithubRepoByID as SearchResult;
+
     return (
       <ResultsDetailsModal
         transitionEnterTimeout={500}
