@@ -7,6 +7,9 @@
     "ResultsPanel.noQuerySearched":
       "Cerca un repo nella barra in alto per vedere i risultati!",
     "ResultsPanel.noResultsAvailable":
-      "Mi dispiace, ma la tua stupida ricerca non ha prodotto risultati!"
+      "Mi dispiace, ma la tua stupida ricerca non ha prodotto risultati!",
+    "ResultsDetails.star": "Stelle: {stars}",
+    "ResultsDetails.fork": "Fork: {fork}",
+    "ResultsDetails.license": "Tipo di licenza: {license}"
   }
 }
