@@ -5,14 +5,13 @@ import View from 'View';
 import LoadingSpinner from 'LoadingSpinner';
 import { declareQueries } from '@buildo/bento/data';
 import { SearchResult } from 'Model';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, intlShape } from 'react-intl';
 import * as PropTypes from 'prop-types';
 
 import './resultDetails.scss';
-const ReactINTLContextType = PropTypes.object.isRequired;
 
 const ResultsDetailsModal = modalWithContext({
-  intl: ReactINTLContextType
+  intl: intlShape
 });
 type Props = {
   onDialogClose(): void;
